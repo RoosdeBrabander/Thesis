@@ -17,5 +17,5 @@ df = df.dropna(subset=["Close", "LogReturn"])
 # Save back to CSV
 df.to_csv(file_path, index=False)
 
-print("✅ Added numeric weekly log returns successfully!")
+print("Added numeric weekly log returns successfully!")
 print(df.head())
