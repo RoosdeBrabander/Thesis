@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Load your file
-file_path = r"C:\Users\roosd\Downloads\econometrie jaar 3\Thesis\sp500_weekly_closed.csv"
+file_path = r"C:\Users\roosd\Downloads\econometrie jaar 3\Thesis\sp500_weekly.csv"
 df = pd.read_csv(file_path)
 
 # --- FIX: ensure Close is numeric ---

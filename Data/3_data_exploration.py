@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # --- 1) Load your file ---
-file_path = r"C:\Users\roosd\Downloads\econometrie jaar 3\Thesis\sp500_weekly_closed.csv"
+file_path = r"C:\Users\roosd\Downloads\econometrie jaar 3\Thesis\sp500_weekly.csv"
 df = pd.read_csv(file_path)
 
 # --- 2) Ensure numeric types ---
@@ -22,12 +22,20 @@ print(df[["Close", "LogReturn"]].describe().T)
 print("\nMissing values:\n", df.isna().sum())
 
 # --- 5) Plot price and log returns ---
-plt.figure(figsize=(10,5))
-plt.plot(df["Date"], df["Close"], label="S&P 500 Weekly Close")
-plt.title("S&P 500 Weekly Closing Prices (10 Years)")
-plt.xlabel("Date")
-plt.ylabel("Price")
-plt.legend()
+import matplotlib.dates as mdates
+
+# Ensure Date column is datetime type
+df["Date"] = pd.to_datetime(df["Date"])
+fig, ax = plt.subplots(figsize=(10,5))
+ax.plot(df["Date"], df["Close"], label="S&P 500 Weekly Close")
+ax.set_title("S&P 500 Weekly Closing Prices (20 Years)")
+ax.set_xlabel("Date")
+ax.set_ylabel("Price")
+
+# Show only years
+ax.xaxis.set_major_locator(mdates.YearLocator())  # Tick every year
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))  # Format as YYYY
+ax.legend()
 plt.tight_layout()
 plt.show()
 
