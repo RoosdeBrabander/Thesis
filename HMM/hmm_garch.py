@@ -149,3 +149,11 @@ plot_acf(returns.abs(), ax=axes[0], lags=20, title='Empirical |r_t|')
 plot_acf(sim_data.abs(), ax=axes[1], lags=20, title='Simulated |r_t| (HMM–GARCH)')
 plt.tight_layout()
 plt.show()
+
+## 5. ACF of squared returns
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+plot_acf((returns**2), ax=axes[0], lags=20, title='Empirical r_t²')
+plot_acf((sim_data**2), ax=axes[1], lags=20, title='Simulated r_t² (HMM–GARCH)')
+plt.tight_layout() 
+plt.show()
+
